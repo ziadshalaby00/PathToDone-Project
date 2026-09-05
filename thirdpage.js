@@ -22,7 +22,7 @@ function showTasks(task) {
             <div>
                 <h3 class="textHeader">${task.title}</h3>
                 <div class="date">
-                    <span class="material-symbols-outlined">
+                    <span class="material-symbols-outlined no-lih">
                         calendar_month
                     </span>
                     <span>${task.date}</span>
@@ -40,7 +40,7 @@ function showTasks(task) {
             </div>
             <div class="goToList" onclick="tasksPage(${task.IDList})">
             <h5>${task.titleList}</h5>
-                <span class="material-symbols-outlined">
+                <span class="material-symbols-outlined no-lih">
                     arrow_back
                 </span>
             </div>`

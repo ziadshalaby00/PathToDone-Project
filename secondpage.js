@@ -39,7 +39,7 @@ function showTasks(ID) {
                 <div>
                     <h3 class="textHeader">${tasks[ID].title}</h3>
                     <div class="date">
-                        <span class="material-symbols-outlined">
+                        <span class="material-symbols-outlined no-lih">
                             calendar_month
                         </span>
                         <span>${tasks[ID].date}</span>

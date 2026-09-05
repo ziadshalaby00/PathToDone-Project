@@ -284,10 +284,13 @@ body {
 }
 #starIcon {
     background-color: rgba(255, 196, 0, 0.692);
+    transform: translateY(4px);
+    cursor: pointer;
 }
 #checkIcon {
-
     background-color: green;
+    transform: translateY(4px);
+    cursor: pointer;
 }
 #Copyright {
     width: 95vw;

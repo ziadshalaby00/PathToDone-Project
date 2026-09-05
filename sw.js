@@ -1,4 +1,4 @@
-const CACHE_NAME = "path-to-done-v7";
+const CACHE_NAME = "path-to-done-v8";
 
 const FILES_TO_CACHE = [
   "./",
@@ -19,7 +19,9 @@ const FILES_TO_CACHE = [
 
   "./favicon/android-chrome-192x192.png",
   "./favicon/android-chrome-512x512.png",
-  "./favicon/favicon.ico"
+  "./favicon/favicon.ico",
+
+  "./material-symbols-outlined.woff2"
 ];
 
 self.addEventListener("install", event => {

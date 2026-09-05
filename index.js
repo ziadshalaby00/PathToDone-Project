@@ -43,7 +43,7 @@ function showList(ID) {
                     <h3 class="textHeader">${lists[ID].title}</h3>
                 </div>
                 <div class="date">
-                    <span class="material-symbols-outlined">
+                    <span class="material-symbols-outlined no-lih">
                         calendar_month
                     </span>
                     <span>${lists[ID].date}</span>

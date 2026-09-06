@@ -206,7 +206,7 @@ function renderPagination(totalPages, totalCount) {
         return;
     }
 
-    pagination.innerHTML = pagination.innerHTML = `
+    pagination.innerHTML = `
         <button id="nextPage" ${currentPage === totalPages ? "disabled" : ""}>
             <span class="material-symbols-outlined">chevron_right</span>
         </button>

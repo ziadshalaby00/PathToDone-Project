@@ -10,7 +10,6 @@ closeSideB.onclick = () => {
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 let lists = {};
-let objTasksForThirdPage = {}
 const container = document.getElementById("container");
 
 const addList = document.getElementById("addList");

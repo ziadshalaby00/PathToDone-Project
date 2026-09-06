@@ -318,3 +318,62 @@ body.dark #beforTasks {
     border-right: 2px solid rgb(50, 50, 60);
     color: rgb(200, 200, 200);
 }
+
+.contSSB {
+    width: 60%;
+    margin: 0 auto 20px;
+    position: relative;
+}
+.contSSB {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#searchIcon {
+    border: none;
+    background-color: white;
+    position: absolute;
+    left: 5px;
+    width: 26px;
+    height: 26px;
+    line-height: 0;
+    border-radius: 50%;
+    background-color: transparent;
+}
+#searchIcon:hover {
+    cursor:auto;
+}
+
+body.dark #searchIcon {
+    background-color: transparent;
+}
+
+#searchOut {
+    height: 30px;
+    width: 100%;
+    outline: none;
+    padding: 10px;
+    position: relative;
+}
+
+.new-search {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    align-items: center;
+}
+
+#searchTitle {
+    width: fit-content;
+    margin: 0 0 20px;
+    font-weight: 500;
+}
+
+body.dark #searchOut {
+    background-color: #ddd;
+}
+
+body.dark #searchTitle {
+    color: #ccc;
+}

@@ -2,14 +2,6 @@ let listsFromStorage = {};
 let objectGet = undefined;
 let tasks = {};
 
-let objForDoneTasks = {
-    title: `<h2>المهام المنجزة</h2>`
-}
-
-let objForStarTasks = {
-    title: `<h2>المهام المميزة</h2>`
-};
-
 const addList = document.getElementById("addList");
 addList.addEventListener("click", function() {
     let titleFUT = prompt("اسم المهمة");
@@ -88,9 +80,6 @@ function deleting(ID) {
     {
         listsFromStorage[objectGet].numTasks--;
         if(tasks[ID].isDone) {listsFromStorage[objectGet].ComTask--}
-        if(tasks[ID].isDone) {delete objForDoneTasks[ID]}
-        if(tasks[ID].isStar) {delete objForStarTasks[ID]}
-        saver();
         delete tasks[ID];
         storageLists();
         document.getElementById(ID).remove();
@@ -102,27 +91,6 @@ function changeIsStar(ID) {
     tasks[ID].isStar = !tasks[ID].isStar;
     storageLists();
     className.className = valueOfStarColor(tasks[ID]);
-
-    if(tasks[ID].isStar)
-    {
-        let model = {
-            title: tasks[ID].title,
-            date: tasks[ID].date,
-            isDone: tasks[ID].isDone,
-            isStar: tasks[ID].isStar,
-            titleList: listsFromStorage[objectGet].title,
-            IDList: listsFromStorage[objectGet].ID,
-        }
-        objForStarTasks[ID] = model;
-        if(objForDoneTasks[ID]) {objForDoneTasks[ID].isStar = tasks[ID].isStar;}
-        saver()
-    }
-    else
-    {
-        delete objForStarTasks[ID];
-        if(objForDoneTasks[ID]) {objForDoneTasks[ID].isStar = tasks[ID].isStar;}
-        saver()
-    }
 }
 
 function changeIsDone(ID) {
@@ -133,27 +101,6 @@ function changeIsDone(ID) {
     className.className = valueOfdoneColor(tasks[ID]);
     className.innerHTML = valueOfdoneIcon(tasks[ID]);
     document.getElementById(ID).className = valueOfdoneList(tasks[ID]);
-
-    if(tasks[ID].isDone)
-    {
-        let model = {
-            title: tasks[ID].title,
-            date: tasks[ID].date,
-            isDone: tasks[ID].isDone,
-            isStar: tasks[ID].isStar,
-            titleList: listsFromStorage[objectGet].title,
-            IDList: listsFromStorage[objectGet].ID,
-        }
-        objForDoneTasks[ID] = model;
-        if(objForStarTasks[ID]) {objForStarTasks[ID].isDone = tasks[ID].isDone;}
-        saver()
-    }
-    else
-    {
-        delete objForDoneTasks[ID];
-        if(objForStarTasks[ID]) {objForStarTasks[ID].isDone = tasks[ID].isDone;}
-        saver()
-    }
 }
 
 function valueOfStarColor(task) {
@@ -243,20 +190,6 @@ function showInPage()
     {
         showTasks(tasks[task].ID);
     }
-
-    if(JSON.parse(localStorage.getItem("objForStarTasks")))
-    {
-        objForStarTasks = JSON.parse(localStorage.getItem("objForStarTasks"));
-    }
-    if(JSON.parse(localStorage.getItem("objForDoneTasks")))
-    {
-        objForDoneTasks = JSON.parse(localStorage.getItem("objForDoneTasks"));
-    }
-}
-
-function saver() {
-    localStorage.setItem("objForStarTasks", JSON.stringify(objForStarTasks));
-    localStorage.setItem("objForDoneTasks", JSON.stringify(objForDoneTasks));
 }
 
 window.addEventListener("load", function(){

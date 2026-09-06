@@ -136,10 +136,6 @@ window.addEventListener("load", function(){
     showInPage();
 })
 
-let div000 = document.getElementById("000");
-let searchInput = document.getElementById("searchOut");
-let objTasksForSearch = {}
-
 searchInput.addEventListener("keypress", function(event){
     if(event.key === "Enter")
     {
@@ -147,109 +143,44 @@ searchInput.addEventListener("keypress", function(event){
     }
 })
 
-function selectorAllSearch() {
-    const query = searchInput.value.trim().toLowerCase();
-
-    if (!query) {
-        return;
-    }
-
-    div000.style.display = "block";
-
-    div000.innerHTML = `
-        <div id="results">
-            <button id="closeResults" onclick="closeResults()">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     height="40px"
-                     viewBox="0 -960 960 960"
-                     width="40px"
-                     fill="#22b6b6">
-                    <path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z"/>
-                </svg>
-            </button>
-
-            <h5 class="textOutPut"></h5>
-        </div>
-    `;
-
-    objTasksForSearch = {};
-
-    let num = 0;
-
-    for (const list in lists) {
-
-        for (const task in lists[list].tasks) {
-
-            const currentTask = lists[list].tasks[task];
-
-            const title = String(currentTask.title).toLowerCase();
-
-            if (title.includes(query)) {
-
-                num++;
-
-                objTasksForSearch[currentTask.ID] = {
-                    title: currentTask.title,
-                    date: currentTask.date,
-                    isDone: currentTask.isDone,
-                    isStar: currentTask.isStar,
-                    titleList: lists[list].title,
-                    IDList: lists[list].ID,
+function buildFilteredTasks(filterKey) {
+    let obj = {};
+    for (const listId in lists) {
+        const list = lists[listId];
+        for (const taskId in list.tasks) {
+            const task = list.tasks[taskId];
+            if (task[filterKey]) {
+                obj[task.ID] = {
+                    title: task.title,
+                    date: task.date,
+                    isDone: task.isDone,
+                    isStar: task.isStar,
+                    titleList: list.title,
+                    IDList: list.ID,
                 };
             }
         }
     }
-
-    search(num);
-}
-
-function search(num) {
-
-    const output = div000.getElementsByTagName("h5")[0];
-
-    if (num > 0) {
-
-        objTasksForSearch.title = `
-            <h2>
-                (<span style="color: #4F8FEF;">${num}</span>)
-                نتائج مطابقة للبحث
-            </h2>
-        `;
-
-        goToThirdPage();
-
-    } else {
-
-        output.innerHTML = `
-            لا توجد نتائج
-            <span class="material-symbols-outlined">
-                search_off
-            </span>
-            <div>
-                الرجاء تجربة كلمة أخرى
-            </div>
-        `;
-    }
-}
-
-function closeResults()
-{
-    document.getElementById("000").style.display = "none";
-    objTasksForSearch = {};
-}
-
-function goToThirdPage() {
-    objTasksForThirdPage = objTasksForSearch;
-    localStorage.setItem("objectForThirdPage", JSON.stringify(objTasksForThirdPage));
-    location.href = "./thirdpage.html";
+    return obj;
 }
 
 function doneTasks() {
-    localStorage.setItem("objectForThirdPage",localStorage.getItem("objForDoneTasks"));
+    localStorage.setItem("thirdPageMode", "display");
+    let obj = buildFilteredTasks("isDone");
+    obj.title = `<h2>المهام المنجزة</h2>`;
+    localStorage.setItem("objectForThirdPage", JSON.stringify(obj));
     location.href = "./thirdpage.html";
 }
 
 function starTasks() {
-    localStorage.setItem("objectForThirdPage",localStorage.getItem("objForStarTasks"));
+    localStorage.setItem("thirdPageMode", "display");
+    let obj = buildFilteredTasks("isStar");
+    obj.title = `<h2>المهام المميزة</h2>`;
+    localStorage.setItem("objectForThirdPage", JSON.stringify(obj));
+    location.href = "./thirdpage.html";
+}
+
+function goToSearchPage() {
+    localStorage.setItem("thirdPageMode", "search");
     location.href = "./thirdpage.html";
 }

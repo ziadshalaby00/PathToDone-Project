@@ -217,11 +217,12 @@ body {
     overflow: auto;
 }
 #searchOut {
-    height: 30px;
+    height: 40px;
     width: 100%;
     outline: none;
     padding: 10px;
-    position: relative;
+    border-radius: 10px;
+    border: none;
 }
 .outputSearch {
     background-color: antiquewhite;
@@ -243,22 +244,14 @@ body {
 .contSSB {
     width: 60%;
     margin: 20px auto;
-    position: relative;
-}
-#searchIcon {
-    border: none;
-    background-color: white;
-    position: absolute;
-    left: 5px;
-    width: 26px;
-    height: 26px;
-    line-height: 0;
-    border-radius: 50%;
-    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 #searchIcon:hover {
     cursor: pointer;
-    transform: scale(1.25);
+    transform: scale(1.05);
 }
 #earaOut {
     width: 100%;
@@ -426,7 +419,11 @@ body.dark #ulSearch li {
 
 
 body.dark #searchIcon {
-    background-color: transparent;
+    background-color: #cccccc;
+}
+
+body.dark .search-word {
+    color: #ddd;
 }
 
 body.dark #textOUT {
@@ -469,4 +466,10 @@ body.dark #closeResults {
 
 body.dark .textOutPut {
     color: rgb(200, 200, 200);
+}
+
+
+body.dark .circle-search:hover {
+    opacity: 1;
+    filter: brightness(120%);
 }

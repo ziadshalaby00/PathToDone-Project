@@ -417,9 +417,17 @@ body.dark #ulSearch li {
     color: rgb(155, 100, 255);
 }
 
+#searchIcon {
+    min-width: 40px;
+    min-height: 40px;
+}
 
 body.dark #searchIcon {
     background-color: #cccccc;
+}
+
+.search-word {
+    white-space: nowrap;
 }
 
 body.dark .search-word {

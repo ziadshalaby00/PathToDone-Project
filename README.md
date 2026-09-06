@@ -7,8 +7,9 @@ A lightweight, frontend-only task management web app for creating lists, organiz
 - 📝 Create & manage task lists — Add, edit, or delete lists.
 - ✅ Task management — Add tasks to any list, mark them as completed or important.
 - ⭐ Quick filters — View all starred or completed tasks in one place.
-- 🔍 Search — Find tasks instantly from the sidebar.
-- 💾 Persistent storage — All data is saved locally using the LocalStorage API.
+- 🔍 Live search — Find any task instantly from a dedicated search page.
+- 📄 Pagination — Task lists are paginated (100 per page) for smooth performance with large lists.
+- 💾 Persistent storage — All data is saved locally using the LocalStorage API, with a single source of truth across all views.
 
 ## 🛠️ Tech Stack
 

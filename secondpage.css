@@ -425,3 +425,52 @@ body.dark #pagination {
 body.dark #pagination button {
     background-color: rgb(55, 15, 95);
 }
+
+#taskFilters {
+    width: 95vw;
+    margin: 0 auto;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: rgb(239, 239, 239);
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+}
+
+#taskFilters button {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(111, 34, 175);
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+#taskFilters button:hover {
+    opacity: 0.8;
+}
+
+/* Active filter */
+#taskFilters button.active {
+    background-color: rgb(70, 20, 120);
+    box-shadow: 0 0 0 2px rgb(111, 34, 175);
+    transform: scale(1.05);
+}
+
+body.dark #taskFilters {
+    background-color: rgb(20, 20, 28);
+    border-left: 2px solid rgb(50, 50, 60);
+    border-right: 2px solid rgb(50, 50, 60);
+}
+
+body.dark #taskFilters button {
+    background-color: rgb(55, 15, 95);
+}
+
+body.dark #taskFilters button.active {
+    background-color: rgb(90, 25, 145);
+    box-shadow: 0 0 0 2px rgb(130, 60, 180);
+}

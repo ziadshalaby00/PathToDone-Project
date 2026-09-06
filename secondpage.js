@@ -5,6 +5,8 @@ let tasks = {};
 const PAGE_SIZE = 100;
 let currentPage = 1;
 
+let currentFilter = "all";
+
 const addList = document.getElementById("addList");
 addList.addEventListener("click", function() {
     let titleFUT = prompt("اسم المهمة");
@@ -183,19 +185,47 @@ function getOrderedTaskIds() {
     return Object.keys(tasks).reverse();
 }
 
-function renderTasksPage() {
+function getFilteredTaskIds() {
     const orderedIds = getOrderedTaskIds();
-    const totalPages = Math.max(1, Math.ceil(orderedIds.length / PAGE_SIZE));
+
+    if (currentFilter === "all") {
+        return orderedIds;
+    }
+
+    return orderedIds.filter(id => {
+        const task = tasks[id];
+
+        if (currentFilter === "done") {
+            return task.isDone;
+        }
+
+        if (currentFilter === "notDone") {
+            return !task.isDone;
+        }
+
+        return true;
+    });
+}
+
+function renderTasksPage() {
+    const filteredIds = getFilteredTaskIds();
+
+    const totalPages = Math.max(
+        1,
+        Math.ceil(filteredIds.length / PAGE_SIZE)
+    );
+
     if (currentPage > totalPages) currentPage = totalPages;
     if (currentPage < 1) currentPage = 1;
 
     const start = (currentPage - 1) * PAGE_SIZE;
-    const pageIds = orderedIds.slice(start, start + PAGE_SIZE);
+    const pageIds = filteredIds.slice(start, start + PAGE_SIZE);
 
     container.innerHTML = "";
+
     pageIds.forEach(id => showTasks(id));
 
-    renderPagination(totalPages, orderedIds.length);
+    renderPagination(totalPages, filteredIds.length);
 }
 
 function renderPagination(totalPages, totalCount) {
@@ -237,6 +267,21 @@ function showInPage()
     beforTasks.innerHTML = `<h2>${listsFromStorage[objectGet].title}</h2>`
     
     container.innerHTML = ""
+    renderTasksPage();
+}
+
+function setFilter(filter) {
+    currentFilter = filter;
+    currentPage = 1;
+
+    document.querySelectorAll("#taskFilters button").forEach(button => {
+        button.classList.remove("active");
+    });
+
+    document
+        .querySelector(`#taskFilters button[data-filter="${filter}"]`)
+        ?.classList.add("active");
+
     renderTasksPage();
 }
 

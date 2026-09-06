@@ -136,13 +136,6 @@ window.addEventListener("load", function(){
     showInPage();
 })
 
-searchInput.addEventListener("keypress", function(event){
-    if(event.key === "Enter")
-    {
-        selectorAllSearch();
-    }
-})
-
 function buildFilteredTasks(filterKey) {
     let obj = {};
     for (const listId in lists) {
@@ -183,4 +176,18 @@ function starTasks() {
 function goToSearchPage() {
     localStorage.setItem("thirdPageMode", "search");
     location.href = "./thirdpage.html";
+}
+
+// =============================================
+// GLOBAL UTILITY: Get LocalStorage Size (Call from Console)
+// =============================================
+function getLocalStorageSize() {
+    let total = 0;
+    for (let key in localStorage) {
+        if (localStorage.hasOwnProperty(key)) {
+            // Multiply by 2 because JS strings are UTF-16
+            total += (localStorage[key].length + key.length) * 2;
+        }
+    }
+    console.log(`Total localStorage size: ${(total / 1024).toFixed(2)} KB`);
 }

@@ -2,6 +2,9 @@ let listsFromStorage = {};
 let objectGet = undefined;
 let tasks = {};
 
+const PAGE_SIZE = 100;
+let currentPage = 1;
+
 const addList = document.getElementById("addList");
 addList.addEventListener("click", function() {
     let titleFUT = prompt("اسم المهمة");
@@ -17,7 +20,8 @@ addList.addEventListener("click", function() {
         tasks[modelTask.ID] = modelTask;
         listsFromStorage[objectGet].numTasks++;
         storageLists();
-        showTasks(modelTask.ID);
+        currentPage = 1;
+        renderTasksPage();
     }
 })
 
@@ -57,7 +61,7 @@ function showTasks(ID) {
                         </span>
                     </button>
                 </div>`
-        container.insertBefore(contentTask, container.firstChild);
+        container.appendChild(contentTask);
 }
 
 function editing(ID) {
@@ -82,7 +86,7 @@ function deleting(ID) {
         if(tasks[ID].isDone) {listsFromStorage[objectGet].ComTask--}
         delete tasks[ID];
         storageLists();
-        document.getElementById(ID).remove();
+        renderTasksPage();
     }
 }
 
@@ -175,6 +179,53 @@ function storageLists()
     localStorage.setItem("listsInStorage", stringLists);
 }
 
+function getOrderedTaskIds() {
+    return Object.keys(tasks).reverse();
+}
+
+function renderTasksPage() {
+    const orderedIds = getOrderedTaskIds();
+    const totalPages = Math.max(1, Math.ceil(orderedIds.length / PAGE_SIZE));
+    if (currentPage > totalPages) currentPage = totalPages;
+    if (currentPage < 1) currentPage = 1;
+
+    const start = (currentPage - 1) * PAGE_SIZE;
+    const pageIds = orderedIds.slice(start, start + PAGE_SIZE);
+
+    container.innerHTML = "";
+    pageIds.forEach(id => showTasks(id));
+
+    renderPagination(totalPages, orderedIds.length);
+}
+
+function renderPagination(totalPages, totalCount) {
+    const pagination = document.getElementById("pagination");
+
+    if (totalCount <= PAGE_SIZE) {
+        pagination.innerHTML = "";
+        return;
+    }
+
+    pagination.innerHTML = pagination.innerHTML = `
+        <button id="nextPage" ${currentPage === totalPages ? "disabled" : ""}>
+            <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+        <span id="pageIndicator">صفحة ${currentPage} من ${totalPages}</span>
+        <button id="prevPage" ${currentPage === 1 ? "disabled" : ""}>
+            <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+    `;
+
+    document.getElementById("prevPage").onclick = () => {
+        currentPage--;
+        renderTasksPage();
+    };
+    document.getElementById("nextPage").onclick = () => {
+        currentPage++;
+        renderTasksPage();
+    };
+}
+
 function showInPage()
 {
     
@@ -186,10 +237,7 @@ function showInPage()
     beforTasks.innerHTML = `<h2>${listsFromStorage[objectGet].title}</h2>`
     
     container.innerHTML = ""
-    for(let task in tasks)
-    {
-        showTasks(tasks[task].ID);
-    }
+    renderTasksPage();
 }
 
 window.addEventListener("load", function(){

@@ -108,30 +108,7 @@ function showInPage()
     }
 }
 
-let massageAtTheStart = `مرحبًا،
-
-نود أن نعرّفكم على موقعنا المخصص لإدارة المهام. يتيح لك هذا الموقع إنشاء قوائم متنوعة وإضافة مهام داخل هذه القوائم، بالإضافة إلى إمكانية تسجيل المهام كمنجزة وتمييزها. يمكنك أيضًا تعديل أو حذف أي مهمة أو قائمة حسب الحاجة.
-
-كما يوفر الموقع إمكانية الوصول إلى جميع المهام المميزة أو المنجزة، فضلاً عن إمكانية البحث عن أي مهمة من خلال الشريط الجانبي.
-
-نتمنى أن تجدوا الموقع مفيدًا في تنظيم مهامكم!`;
-
-function restartMassege() {
-    localStorage.removeItem("close");
-    showMassege();
-}
-
-function showMassege()
-{
-    if(!localStorage.getItem("close"))
-    {
-        let agree = confirm(massageAtTheStart);
-        agree ? localStorage.setItem("close", true) : localStorage.removeItem("close");
-    }
-}
-
 window.addEventListener("load", function(){
-    showMassege();
     showInPage();
 })
 

@@ -16,6 +16,12 @@
     <link rel="stylesheet" href="./material.css">
 </head>
 <body>
+    <script>
+        if (localStorage.getItem("theme") === "dark") {
+            document.body.classList.add("dark");
+        }
+    </script>
+    
     <div id="header">
         <div id="addList">
             <div>اضافة قائمة </div>

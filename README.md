@@ -2,6 +2,11 @@
 
 A lightweight, frontend-only task management web app for creating task lists, organizing tasks, and tracking progress — entirely in the browser.
 
+<img height="200" alt="Opera-Snapshot-2025-03-21-034515-pathtodone-netlify-app" src="https://github.com/user-attachments/assets/f7f4b326-149b-4e79-9901-037eec92443c" />
+<img height="200" alt="Opera-Snapshot-2025-03-21-034559-pathtodone-netlify-app" src="https://github.com/user-attachments/assets/9a826d04-c524-482f-90b0-9bf7a12ca2b3" />
+<img height="200" alt="Screenshot_1" src="https://github.com/user-attachments/assets/33593ae1-6c6a-40c5-b4f6-d3a9ef99c5dc" />
+
+
 ## ✨ Features
 
 * 📝 **Task Lists**

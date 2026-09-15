@@ -175,8 +175,4 @@ PathToDone does not require user accounts and does not send task data to a backe
 
 Tasks and lists remain stored locally in the user's browser.
 
-## 📄 License
 
-Developed by [Ziad Shalaby](https://github.com/ziadshalaby00).
-
-This project is licensed under the **MIT License**.

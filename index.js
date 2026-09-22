@@ -77,7 +77,7 @@ async function editing(ID) {
 async function deleting(ID) {
     let deletingTitle = lists[ID].title;
     let massege = `سوف يتم مسح القائمة بالكامل وما فيها من مهام. هل انت متأكد من حذف قائمة: ${deletingTitle}؟`;
-    let youSure = await UI.confirm(massege);
+    let youSure = await UI.confirm(massege, { danger: true });
 
     if(youSure)
     {

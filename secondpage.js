@@ -82,7 +82,7 @@ async function deleting(ID) {
     let deletingTitle = tasks[ID].title;
     let massege = `هل انت متأكد من حذف مهمة: ${deletingTitle}؟`;
 
-    let youSure = await UI.confirm(massege);
+    let youSure = await UI.confirm(massege, { danger: true });
 
     if(youSure)
     {

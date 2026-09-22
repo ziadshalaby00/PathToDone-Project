@@ -1,3 +1,10 @@
+:root {
+  --ui-confirm-bg: rgb(76, 163, 163);
+  --ui-confirm-bg-dark: rgb(25, 80, 80);
+  --ui-danger-bg: rgb(200, 25, 25);
+  --ui-danger-bg-dark: rgb(160, 18, 18);
+}
+
 .ui-modal-root {
   position: fixed;
   inset: 0;
@@ -105,7 +112,12 @@
 }
 
 .ui-btn-confirm {
-  background: rgb(76, 163, 163);
+  background: var(--ui-confirm-bg);
+  color: #fff;
+}
+
+.ui-btn-danger {
+  background: var(--ui-danger-bg);
   color: #fff;
 }
 
@@ -141,6 +153,11 @@ body.dark .ui-btn-cancel {
 }
 
 body.dark .ui-btn-confirm {
-  background: rgb(25, 80, 80);
+  background: var(--ui-confirm-bg-dark);
+  color: #fff;
+}
+
+body.dark .ui-btn-danger {
+  background: var(--ui-danger-bg-dark);
   color: #fff;
 }

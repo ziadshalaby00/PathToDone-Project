@@ -55,6 +55,8 @@ body {
     font-family: "Tajawal", sans-serif;
     direction: rtl;
     background-color: rgb(30, 0, 77);
+    --ui-confirm-bg: rgb(111, 34, 175);   
+    --ui-confirm-bg-dark: rgb(55, 15, 95);
 }
 #header {
     width: 100vw;
@@ -82,7 +84,7 @@ body {
     height: 40px;
     border-radius: 50%;
     border: none;
-    color: rgb(34, 182, 182);
+    color: rgb(111, 34, 175);
     background-color: white;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
     line-height: 0;
@@ -274,7 +276,7 @@ body.dark #textHeader {
 }
 
 body.dark .circle {
-    color: rgb(30, 160, 160);
+    color: rgb(160, 90, 220);
     background-color: rgb(35, 35, 42);
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
 }

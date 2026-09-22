@@ -80,6 +80,7 @@
       okText = "موافق",
       cancelText = "إلغاء",
       showCancel = true,
+      danger = false,
     } = options;
 
     activeType = type;
@@ -90,6 +91,7 @@
     inputEl.style.display = type === "prompt" ? "block" : "none";
 
     okBtn.textContent = okText;
+    okBtn.classList.toggle("ui-btn-danger", danger && type === "confirm");
     cancelBtn.textContent = cancelText;
     cancelBtn.style.display = showCancel ? "inline-flex" : "none";
 
@@ -135,14 +137,15 @@
     },
 
     confirm: function (message, options = {}) {
-      return open({
-        type: "confirm",
-        title: options.title || "تأكيد",
-        message,
-        okText: options.okText || "نعم",
-        cancelText: options.cancelText || "إلغاء",
-        showCancel: true,
-      });
+        return open({
+            type: "confirm",
+            title: options.title || "تأكيد",
+            message,
+            okText: options.okText || "نعم",
+            cancelText: options.cancelText || "إلغاء",
+            showCancel: true,
+            danger: options.danger || false,
+        });
     },
 
     prompt: function (message, defaultValue = "", options = {}) {

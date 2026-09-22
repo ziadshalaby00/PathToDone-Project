@@ -1,0 +1,146 @@
+.ui-modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  direction: rtl;
+  font-family: inherit;
+}
+
+.ui-modal-root.open {
+  display: flex;
+}
+
+.ui-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(2px);
+}
+
+.ui-modal {
+  position: relative;
+  width: min(92vw, 420px);
+  background: #fff;
+  color: #111;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  animation: ui-modal-in 0.18s ease-out;
+}
+
+@keyframes ui-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.ui-modal-title {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.ui-modal-message {
+  margin: 0 0 14px;
+  line-height: 1.6;
+  color: #444;
+  white-space: pre-wrap;
+}
+
+.ui-modal-input {
+  display: none;
+  width: 100%;
+  height: 42px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 0 12px;
+  outline: none;
+  font: inherit;
+  margin-bottom: 16px;
+  background: #fff;
+  color: #111;
+}
+
+.ui-modal-input:focus {
+  border-color: rgb(76, 163, 163);
+  box-shadow: 0 0 0 3px rgba(76, 163, 163, 0.18);
+}
+
+.ui-modal-actions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ui-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+  min-width: 80px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ui-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.ui-btn:active {
+  transform: translateY(0);
+}
+
+.ui-btn-confirm {
+  background: rgb(76, 163, 163);
+  color: #fff;
+}
+
+.ui-btn-cancel {
+  background: #e5e7eb;
+  color: #111;
+}
+
+/* Dark mode */
+body.dark .ui-modal {
+  background: #1f1f2b;
+  color: #eee;
+}
+
+body.dark .ui-modal-message {
+  color: #c7c7d1;
+}
+
+body.dark .ui-modal-input {
+  background: #2a2a3a;
+  color: #fff;
+  border-color: #444;
+}
+
+body.dark .ui-modal-input:focus {
+  border-color: rgb(60, 215, 215);
+  box-shadow: 0 0 0 3px rgba(60, 215, 215, 0.18);
+}
+
+body.dark .ui-btn-cancel {
+  background: #343444;
+  color: #eee;
+}
+
+body.dark .ui-btn-confirm {
+  background: rgb(25, 80, 80);
+  color: #fff;
+}

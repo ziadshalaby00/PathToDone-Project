@@ -8,8 +8,8 @@ let currentPage = 1;
 let currentFilter = "all";
 
 const addList = document.getElementById("addList");
-addList.addEventListener("click", function() {
-    let titleFUT = prompt("اسم المهمة");
+addList.addEventListener("click", async function() {
+    let titleFUT = await UI.prompt("اسم المهمة");
     if(titleFUT)
     {
         let modelTask = {
@@ -66,26 +66,32 @@ function showTasks(ID) {
         container.appendChild(contentTask);
 }
 
-function editing(ID) {
-    let massege = `تغيير اسم قائمة: ${tasks[ID].title}`;
-    let titleFUT = prompt(massege, tasks[ID].title);
+async function editing(ID) {
+    let massege = `تغيير اسم مهمة: ${tasks[ID].title}`;
+    let titleFUT = await UI.prompt(massege, tasks[ID].title);
+
     if(titleFUT)
-    {   
+    {
         tasks[ID].title = titleFUT;
         storageLists();
         document.getElementById(ID).getElementsByClassName("textHeader")[0].textContent = titleFUT;
     }
 }
 
-function deleting(ID) {
+async function deleting(ID) {
     let deletingTitle = tasks[ID].title;
-    let massege = `هل انت متأكد من حذف مهمة: ${deletingTitle}؟`
+    let massege = `هل انت متأكد من حذف مهمة: ${deletingTitle}؟`;
 
-    let youSure = confirm(massege);
+    let youSure = await UI.confirm(massege);
+
     if(youSure)
     {
         listsFromStorage[objectGet].numTasks--;
-        if(tasks[ID].isDone) {listsFromStorage[objectGet].ComTask--}
+
+        if(tasks[ID].isDone) {
+            listsFromStorage[objectGet].ComTask--;
+        }
+
         delete tasks[ID];
         storageLists();
         renderTasksPage();

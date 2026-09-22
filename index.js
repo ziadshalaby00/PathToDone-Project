@@ -13,10 +13,10 @@ let lists = {};
 const container = document.getElementById("container");
 
 const addList = document.getElementById("addList");
-addList.addEventListener("click", function() {
-    let titleFUL = prompt("اسم القائمة");
+addList.addEventListener("click", async function() {
+    let titleFUL = await UI.prompt("اسم القائمة");
     if(titleFUL)
-    {   
+    {
         let modelList = {
             title: titleFUL,
             date: new Date().toLocaleString(),
@@ -63,21 +63,22 @@ function showList(ID) {
     container.insertBefore(contentList, container.firstChild);
 }
 
-function editing(ID) {
+async function editing(ID) {
     let massege = `تغيير اسم قائمة: ${lists[ID].title}`;
-    let titleFUL = prompt(massege, lists[ID].title);
+    let titleFUL = await UI.prompt(massege, lists[ID].title);
     if(titleFUL)
-    {   
+    {
         lists[ID].title = titleFUL;
         storageLists();
         document.getElementById(ID).getElementsByClassName("textHeader")[0].textContent = titleFUL;
     }
 }
 
-function deleting(ID) {
+async function deleting(ID) {
     let deletingTitle = lists[ID].title;
-    let massege = ` سوف يتم مسح القائمة بالكامل وما فيها من مهام. هل انت متأكد من حذف قائمة: ${deletingTitle}؟`
-    let youSure = confirm(massege);
+    let massege = `سوف يتم مسح القائمة بالكامل وما فيها من مهام. هل انت متأكد من حذف قائمة: ${deletingTitle}؟`;
+    let youSure = await UI.confirm(massege);
+
     if(youSure)
     {
         delete lists[ID];
@@ -85,7 +86,6 @@ function deleting(ID) {
         document.getElementById(ID).remove();
     }
 }
-
 function tasksPage(ID) {
     localStorage.setItem("objectSent", ID)
     location.href = "./secondpage.html";

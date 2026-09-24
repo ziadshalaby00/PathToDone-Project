@@ -1,4 +1,4 @@
-const CACHE_NAME = "path-to-done-v15";
+const CACHE_NAME = "path-to-done-v16";
 
 const FILES_TO_CACHE = [
   "./",

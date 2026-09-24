@@ -57,6 +57,12 @@ body {
     background-color: rgb(30, 0, 77);
     --ui-confirm-bg: rgb(111, 34, 175);   
     --ui-confirm-bg-dark: rgb(55, 15, 95);
+
+    --ui-focus-color: rgb(111, 34, 175);
+    --ui-focus-shadow: rgba(111, 34, 175, 0.20);
+
+    --ui-focus-color-dark: rgb(160, 90, 220);
+    --ui-focus-shadow-dark: rgba(160, 90, 220, 0.22);
 }
 #header {
     width: 100vw;

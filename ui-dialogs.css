@@ -3,6 +3,12 @@
   --ui-confirm-bg-dark: rgb(25, 80, 80);
   --ui-danger-bg: rgb(200, 25, 25);
   --ui-danger-bg-dark: rgb(160, 18, 18);
+
+  --ui-focus-color: rgb(76, 163, 163);
+  --ui-focus-shadow: rgba(76, 163, 163, 0.18);
+
+  --ui-focus-color-dark: rgb(60, 215, 215);
+  --ui-focus-shadow-dark: rgba(60, 215, 215, 0.18);
 }
 
 .ui-modal-root {
@@ -77,8 +83,8 @@
 }
 
 .ui-modal-input:focus {
-  border-color: rgb(76, 163, 163);
-  box-shadow: 0 0 0 3px rgba(76, 163, 163, 0.18);
+  border-color: var(--ui-focus-color);
+  box-shadow: 0 0 0 3px var(--ui-focus-shadow);
 }
 
 .ui-modal-actions {
@@ -104,11 +110,6 @@
 
 .ui-btn:hover {
   opacity: 0.85;
-  transform: translateY(-1px);
-}
-
-.ui-btn:active {
-  transform: translateY(0);
 }
 
 .ui-btn-confirm {
@@ -143,8 +144,8 @@ body.dark .ui-modal-input {
 }
 
 body.dark .ui-modal-input:focus {
-  border-color: rgb(60, 215, 215);
-  box-shadow: 0 0 0 3px rgba(60, 215, 215, 0.18);
+  border-color: var(--ui-focus-color-dark);
+  box-shadow: 0 0 0 3px var(--ui-focus-shadow-dark);
 }
 
 body.dark .ui-btn-cancel {
